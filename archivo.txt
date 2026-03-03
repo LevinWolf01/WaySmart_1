@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 hola
-=======
-hola desde develop
->>>>>>> develop
