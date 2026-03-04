@@ -1,1 +1,626 @@
-Hola
+; Definitions of system screens
+
+; Motif: MUGEN1
+; Optimal resolution: 1280x720
+; Supported languages: en, ja
+
+; Notes about fonts:
+;   - up to 10 fonts can be specified in the [Files] section.
+;   - fonts indexed here do not refer to the ones in fight.def
+;   - fonts are search in directories in the following order:
+;     1. system directory
+;     2. mugen program directory (not recommended to keep custom fonts here)
+;     3. data/ (not recommended to keep custom fonts here)
+;     4. font/
+
+;------------------------------------------------------------------------------------------------------------------------------------
+[Info]
+name 	     ="Dimensional Bloodlust"	;Name of motif
+author	     ="Levian Wolften"          ;Motif author name
+versiondate  = 1.17.12.23         	;Version date of motif (MM-DD-YYYY) (new in MUGEN 1.0)
+mugenversion = 1.1                      ;Version of M.U.G.E.N motif is compatible with (new in MUGEN 1.0)
+localcoord   = 1280,720                 ;DON´T MOVE
+
+;------------------------------------------------------------------------------------------------------------------------------------
+;Directories are checked in this order:
+;1. current directory system.def is in
+;2. data/
+;3. your MUGEN directory
+;eg. If you write "spr = system.sff", and this system.def file
+;    is in ~/mugen/data/mymotif/, then Mugen will first look
+;    for ~/mugen/data/mymotif/system.sff. If it does not find
+;    it there, it looks for ~/mugen/data/system.sff (the default).
+;    Finally, if that is not found, it will look for
+;    ~/mugen/system.sff. 
+;---------------------------------------------------------------------------------------------------------------------------------
+
+[Files]
+spr = system.sff             ;Filename of sprite data
+snd = system.snd             ;Filename of sound data
+logo.storyboard = Logo.def   ;Logo storyboard definition (optional)
+intro.storyboard =           ;Intro storyboard definition (optional)
+select = select.def          ;Character and stage selection list
+fight = data/lifebar/fight.def            ;Fight definition filename
+;---------------------------------------------------------------------------------------------------------------------------------
+
+;System fonts
+font1 = MENU.def
+font2 = name14.def
+font3 = Name Italic Wars.def
+font4 = arcade.def
+font5 = mssansserif-tt36.def
+;font5.height = 36         ;Uncomment to override the size of the font (Truetype fonts only)
+font6 = infofont.def
+
+;---------------------------------------------------------------------------------------------------------------------------------
+
+; Load alternative victory quote font (font5) if language is "ja".
+[ja.Files]
+spr = system.sff          ;Filename of sprite data
+snd = system.snd          ;Filename of sound data
+logo.storyboard =         ;Logo storyboard definition (optional)
+intro.storyboard =        ;Intro storyboard definition (optional)
+select = select.def       ;Character and stage selection list
+fight = fight.def         ;Fight definition filename
+;---------------------------------------------------------------------------------------------------------------------------------
+
+;System fonts
+font1 = f-4x6.def
+font2 = name14.def
+font3 = enter48.def
+font4 = arcade.def
+font5 = msgothic-tt36.def
+;font5.height = 36         ;Uncomment to override the size of the font (Truetype fonts only)
+font6 = msgothic-tt36.def
+font6.height = 13
+
+;------------------------------------------------------------------------------------------------------------------------------------
+[Music]
+ ;Put a filename for a MOD, MP3 or MIDI here, or just leave it
+ ;blank if you do not want music. If an invalid filename is
+ ;given, then no music will play.
+ ;To play mymusic.mp3 from the sound/ directory, put:
+ ;  title.bgm = sound/mymusic.mp3
+ ;Music will continue to play between screens if the files names
+ ;are the same, and both BGMs are specified to loop.
+;---------------------------------------------------------------------------------------------------------------------------------
+
+  ;Music to play at Main Menu screen.
+title.bgm = data/Infinite Extincion Main BG Screen.mp3
+title.bgm.volume = 80    ;volume scaling factor in percent. 100 is default
+title.bgm.loop = 1        ;Set to 0 to prevent looping
+title.bgm.loopstart = 
+title.bgm.loopend = 
+;---------------------------------------------------------------------------------------------------------------------------------
+
+  ;Music to play at char select screen.
+select.bgm = data/select.mp3
+select.bgm.volume = 60
+select.bgm.loop = 1
+select.bgm.loopstart =
+select.bgm.loopend = 
+;---------------------------------------------------------------------------------------------------------------------------------
+
+  ;Music to play at versus screen.
+vs.bgm = data/Vs Screen.mp3
+vs.bgm.volume = 100
+vs.bgm.loop = 0
+vs.bgm.loopstart =
+vs.bgm.loopend = 
+;---------------------------------------------------------------------------------------------------------------------------------
+
+  ;Music to play at victory screen.
+victory.bgm = 
+victory.bgm.volume =
+victory.bgm.loop = 0
+victory.bgm.loopstart =
+victory.bgm.loopend = 
+
+;------------------------------------------------------------------------------------------------------------------------------------
+;Title screen definition
+[Title Info]
+fadein.time = 10
+fadeout.time = 10
+menu.pos = 640,719
+menu.item.font = 0,0,0
+menu.item.active.font = 1,0,0
+menu.item.spacing = 0,0
+menu.itemname.arcade = "A"
+menu.itemname.versus = "B"
+menu.itemname.teamarcade = "C"
+menu.itemname.teamversus = "D"
+menu.itemname.teamcoop = "E"
+menu.itemname.survival = "F"
+menu.itemname.survivalcoop = "G"
+menu.itemname.training = ""
+menu.itemname.watch = "H"
+menu.itemname.options = "I"
+menu.itemname.exit = "J"
+menu.window.margins.y = 1280,720
+menu.window.visibleitems = 1
+menu.boxcursor.visible = 0
+menu.boxcursor.coords = -298,-35,298,6
+cursor.move.snd = 100,0
+cursor.done.snd = 100,1
+cancel.snd = 100,2
+
+;------------------------------------------------------------------------------------------------------------------------------------
+;Title background definition
+[TitleBGdef]
+bgclearcolor = 0,0,0
+
+[TitleBG 01] ;Fondo
+type  = normal
+spriteno = 0,1
+layerno = 0
+mask = 1
+
+[TitleBG 02] ;Imagenes del Menú
+type  = normal
+spriteno = 0,2
+layerno = 0
+mask = 1
+
+[TitleBG 03] ;VELOCIT
+type  = normal
+spriteno = 0,3
+layerno = 0
+start = 0,0
+tile  = 1,1
+velocity = -0.5,0
+mask = 1
+
+;---------------------------------------------------------------------------------------------------------------------------------
+
+[Infobox] ;(new in MUGEN 1.0)
+text.font = 6,0,1
+
+;---------------------------------------------------------------------------------------------------------------------------------
+
+[Infobox Text] ;(new in MUGEN 1.0)
+Welcome to M.U.G.E.N 1.1 beta!
+_
+* This is a public development build, for testing purposes.
+_
+* This release isn't stable and may contain bugs and incomplete features. If you are looking for a stable build, get the latest M.U.G.E.N 1.0 from elecbyte.com.
+_
+* We may change features without notice between development builds. Since things may break, we recommend that you DO NOT rely on any particular features specific to this build.
+_
+* Please report bugs in elecbyte.com/forum in the MUGEN 1.1 section.
+_
+* Your help and cooperation are appreciated!
+
+;-----------------------------------------------------------------------------------------------
+[ja.Infobox Text] ;(new in MUGEN 1.0)
+M.U.G.E.N 1.1ベータ版をご利用いただいてありがとうございます！
+_
+このメッセージは、data/mugen1/system.defで編集できます。
+
+;-------------------------------------------------------------------------------------------------------------------------------------
+;Character select definition
+[Select Info]
+fadein.time = 10
+fadeout.time = 10
+rows = 10
+columns = 36
+wrapping = 1                  ;1 to let cursor wrap around
+pos = 15,175                   ;Position to draw to
+showemptyboxes = 1            ;1 to show empty boxes
+moveoveremptyboxes = 0        ;1 to allow cursor to move over empty boxes
+	
+cell.size = 32,32             ;x,y size of each cell		(in pixels)(SIN DECIMALES!)
+cell.spacing = 3	      ;Space between each cell 		    	   (SIN DECIMALES!)
+cell.bg.spr = 150,0           ;Note: Don't use animation for cells
+cell.random.spr = 151,0       ;Icon for random select 		 	   (don't use animation)
+cell.random.switchtime = 7    ;Time to wait before changing to another random portrait
+
+p1.cursor.startcell = 0,0
+p1.cursor.active.anim = 160
+p1.cursor.done.spr = 161,0
+p1.cursor.move.snd = 100,0
+p1.cursor.done.snd = 100,1
+p1.random.move.snd = 100,0
+
+p2.cursor.startcell = 0,35
+p2.cursor.active.anim = 170
+p2.cursor.done.spr = 171,0
+p2.cursor.blink = 0            ;1 to blink p2's cursor if overlapping p1's
+p2.cursor.move.snd = 100,0
+p2.cursor.done.snd = 100,1
+p2.random.move.snd = 100,0
+
+random.move.snd.cancel = 0    ;1 to have random move sound cancel itself when played repeatedly
+stage.move.snd = 100,0
+stage.done.snd = 100,1
+cancel.snd = 100,2
+portrait.spr = 9000,0         ;Do not change from 9000,0
+portrait.offset = 0,0
+portrait.scale = 0.230,0.240
+
+title.offset = 640,38        ;Position of title (Arcade Mode, etc)
+title.font = 3,0,0           ;Font of title (-1 for none)
+
+;---------------------------------------------------------------------------------------------------------------------------------
+
+;Big portraits
+p1.face.spr = 9000,1          ;Do not change from 9000,1
+p1.face.offset = 7,6          ;Position to put big portrait
+p1.face.scale = 0.280,0.280  
+p1.face.facing = 1
+
+
+p2.face.spr = 9000,1
+p2.face.offset = 1272,6
+p2.face.scale = 0.280,0.280
+p2.face.facing = -1
+
+;---------------------------------------------------------------------------------------------------------------------------------
+
+;Name (Font: Italic Wars)
+p1.name.offset = 160,80       ;Position to put name
+p1.name.font = 3,3,1           ;Set to -1 for no display
+p1.name.spacing = 0,30         ;Space between each name for players on the same team
+
+;---------------------------------------------------------------------------------------------------------------------------------
+p2.name.offset = 1120,80
+p2.name.font = 3,1,-1
+p2.name.spacing = -0,30
+
+;---------------------------------------------------------------------------------------------------------------------------------
+
+;Stage select
+stage.pos = 640,155
+stage.active.font = 3,0,0
+stage.active2.font = 3,2       ;Second font color for blinking
+stage.done.font = 3,0
+
+;---------------------------------------------------------------------------------------------------------------------------------
+
+;Team menu
+teammenu.move.wrapping = 1
+p1.teammenu.pos = 80, 130
+
+;---------------------------------------------------------------------------------------------------------------------------------
+
+;p1.teammenu.bg.spr =
+p1.teammenu.selftitle.font = 3,3, 1
+p1.teammenu.selftitle.text = "TEAM MODE"
+p1.teammenu.enemytitle.font = 3,3, 1
+p1.teammenu.enemytitle.text = "TEAM MODE"
+p1.teammenu.move.snd = 100,0
+p1.teammenu.value.snd = 100,0
+p1.teammenu.done.snd = 100,1
+p1.teammenu.item.offset = 0,110
+p1.teammenu.item.spacing = 0,40
+p1.teammenu.item.font = 3,0, 1
+p1.teammenu.item.active.font = 3,3, 1
+p1.teammenu.item.active2.font = 3,3, 1, 224,224,240 ;Second font color for blinking
+p1.teammenu.item.cursor.offset = -30, 0
+p1.teammenu.item.cursor.anim = 180
+p1.teammenu.value.icon.offset = 210,1
+p1.teammenu.value.icon.spr = 181,0
+p1.teammenu.value.empty.icon.offset = 210,1
+p1.teammenu.value.empty.icon.spr = 182,0
+p1.teammenu.value.spacing = 30,0
+
+;p2 team
+p2.teammenu.pos = 1200, 130
+
+;p2.teammenu.bg.spr =
+p2.teammenu.selftitle.font = 3,1, -1
+p2.teammenu.selftitle.text = "TEAM MODE"
+p2.teammenu.enemytitle.font = 3,1, -1
+p2.teammenu.enemytitle.text = "TEAM MODE"
+p2.teammenu.move.snd = 100,0
+p2.teammenu.value.snd = 100,0
+p2.teammenu.done.snd = 100,1
+p2.teammenu.item.offset = 0,110
+p2.teammenu.item.spacing = 0,40
+p2.teammenu.item.font = 3,0, -1
+p2.teammenu.item.active.font = 3,1, -1
+p2.teammenu.item.active2.font = 3,1, -1, 224,224,240 ;Second font color for blinking
+p2.teammenu.item.cursor.offset = 30, 0
+p2.teammenu.item.cursor.anim = 190
+p2.teammenu.value.icon.offset = -210,1
+p2.teammenu.value.icon.spr = 191,0
+p2.teammenu.value.empty.icon.offset = -210,1
+p2.teammenu.value.empty.icon.spr = 192,0
+p2.teammenu.value.spacing = -30,0
+
+; Debug screen element (can be used for testing fonts)
+
+;sysexplod0.text =
+;sysexplod0.font =
+
+[Begin Action 160] ;P1 active cursor
+160,0, 0,0, 8
+160,1, 0,0, 8
+
+
+[Begin Action 170] ;P2 active cursor
+170,0, 0,0, 8
+170,1, 0,0, 8
+
+
+[Begin Action 180] ;P1 Team mode cursor
+180,0, 0,0, 1
+180,0, 3,0, 1
+180,0, 6,0, 1
+180,0, 9,0, 1
+180,0,12,0, 1
+180,0,15,0, 1
+180,0,18,0, 1
+180,0,21,0, 1
+
+[Begin Action 190] ;P2 Team mode cursor
+190,0, 0,0, 1
+190,0,-3,0, 1
+190,0,-6,0, 1
+190,0,-8,0, 1
+190,0,-12,0, 1
+190,0,-15,0, 1
+190,0,-18,0, 1
+190,0,-21,0, 1
+
+;------------------------------------------------------------------------------------------------------------------------------------
+;Character select screen background
+[SelectBGdef]
+;spr = graphics/selectbg.sff  ;Filename of sprite data
+
+[SelectBG 0] ;Lobby seleccion de personajes
+type  = normal
+spriteno = 0,4
+layerno = 0
+start = 0,0
+mask = 1
+
+[SelectBG 1] 			;Marco y logo VS
+type  = normal
+spriteno = 0,5
+layerno = 0
+start = 0,0
+mask = 1
+
+;-----------------------------------------------------------------------------------------------------------------------------------
+[VS Screen]
+time = 850              	;Time to show screen
+fadein.time = 20
+fadeout.time = 25
+
+;Match text in arcade modes
+match.text = "Match %i"   	;%i can be used for the match number
+match.offset = 20, 709
+match.font = 2,0,1
+
+;Big portraits
+p1.spr = 9000, 1
+p1.offset = 94,177
+p1.facing = 1
+p1.scale = .527,.527
+
+p2.spr = 9000, 1
+p2.offset = 1184,177
+p2.facing = -1
+p2.scale = .527,.527
+
+;Names
+p1.name.offset = 100,600  	;Position to put name
+p1.name.font = 3,3,1      	;Set to -1 for no display
+p1.name.spacing = 0,44    	;Space between each name for players on the same team
+
+p2.name.offset = 1170,600
+p2.name.font = 3,1,-1
+p2.name.spacing = 0,44
+
+;--------------------------------------------------------------------------------------------------------------------------------------
+;VS Match up screen background
+[VersusBGdef] 
+
+[VersusBG 01]             	;Fondo VS 
+type  = normal
+spriteno = 0,9
+start = 0,0
+mask = 1
+layerno = 0
+
+[VersusBG 02]             	;Fondo con Transparencia Portraits
+type  = normal
+spriteno = 0,10
+start = 0,0
+mask = 1
+layerno = 0
+
+[VersusBG 03]             	;Marco Portraits VS Screen
+type  = normal
+spriteno = 0,11
+start = 0,0
+mask = 1
+layerno = 1
+
+[VersusBG 04]             	;VS Logo
+type  = normal
+spriteno = 0,12
+start = 0,0
+mask = 1
+layerno = 1
+
+[VersusBG 05]             	;Velocit
+type  = normal
+spriteno = 0,13
+start = 0,0
+mask = 1
+layerno = 0
+tile = 1,1
+velocity = 1,0
+
+;----------------------------------------------------------------------------------------------------------------------------------------
+;Demo mode definition
+[Demo Mode]
+enabled = 0               	;Set to 1 to enable demo mode, 0 to disable
+select.enabled = 0        	;Set to 1 to display select screen, 0 to disable
+vsscreen.enabled = 0      	;Set to 1 to display versus screen, 0 to disable
+title.waittime = 600      	;Time to wait at title before starting demo mode
+fight.endtime = 1500      	;Time to display the fight before returning to title
+fight.playbgm = 0         	;Set to 1 to enable in-fight BGM, 0 to disable
+fight.stopbgm = 1		;Set to 1 to stop title BGM (only if playbgm = 0)
+fight.bars.display = 0    	;Set to 1 to display lifebar, 0 to disable
+intro.waitcycles = 1      	;Cycles to wait before intro cutscene is played again
+debuginfo = 0             	;Set to 0 to hide debugging info (debug mode only)
+
+;------------------------------------------------------------------------------------------------------------------------------------
+;Continue screen definition
+[Continue Screen]
+enabled = 1               	;Set to 1 to show continue screen, 0 to disable
+pos = 640,240             	;Position
+
+;***Known issue*** The display elements below use the fight.def resources
+
+;instead of the ones defined in this file.
+continue.text = "CONTINUE?"
+continue.font = 5,0,0
+continue.offset = 0,0 
+
+;Inactive and active (selected) YES/NO text
+yes.text = "YES"
+yes.font = 5,0,0, 128,128,128
+yes.offset = -80, 60
+yes.active.text = "YES"
+yes.active.font = 5,3,0
+yes.active.offset = -80, 60
+no.text = "NO"
+no.font = 5,0,0, 128,128,128
+no.offset = 80, 60
+no.active.text = "NO"
+no.active.font = 5,3,0
+no.active.offset = 80, 60
+
+;-------------------------------------------------------------------------------------------------------------------------------------
+;Game over screen definition
+[Game Over Screen]
+enabled = 0               	;Set to 1 to show game over screen, 0 to disable
+storyboard =              	;Game over storyboard filename
+
+;------------------------------------------------------------------------------------------------------------------------------------
+;Victory screen definition
+
+;This is the screen that is shown when you win a match in arcade mode.
+;It will not be displayed on the last match of arcade mode.
+[Victory Screen]
+enabled = 0
+time = 300                	;Time to show screen
+fadein.time = 8
+fadeout.time = 15
+
+;Winner's portrait and name
+p1.offset = 400,-40
+p1.spr = 9000,2
+p1.facing = 1
+p1.scale = 1,1
+p1.window = 0,0, 1279,500
+p1.name.offset = 40,570
+p1.name.font = 3,3,1
+
+;Win quote text
+winquote.text = "Winner!" 	;Default win quote text to show
+winquote.offset = 40,615
+winquote.font = 5,0,1
+winquote.window = 38,521, 1241,708
+winquote.textwrap = w     	;Word wrap
+
+;------------------------------------------------------------------------------------------------------------------------------------
+;Victory screen background
+[VictoryBGdef] 
+
+[VictoryBG 1] 
+type  = normal
+spriteno = 100,0
+start = 0,0
+tile  = 1,1
+velocity = 0,1.5
+window = 0,501, 1279,959
+
+[VictoryBG 2]
+type  = normal
+spriteno = 100,1
+start = 0,0
+tile  = 1,1
+window = 0,0, 1279,500
+velocity = 0,1.5
+
+[VictoryBG 3]
+type  = normal
+spriteno = 100,1
+start = 0,0
+tile  = 1,1
+window = 25,520, 1254,709
+velocity = 0,1.5
+
+;------------------------------------------------------------------------------------------------------------------------------------
+;Win screen definition
+
+;This is the screen that is shown when you win in arcade mode.
+;It will not be displayed if the winning character has an ending.
+[Win Screen]
+enabled = 1               	;Set to 1 to show win screen, 0 to disable
+wintext.text = "Congratulations!"
+wintext.font = 3,0,0
+wintext.offset = 640,240
+wintext.displaytime = -1
+wintext.layerno = 2
+fadein.time = 32
+pose.time = 300
+fadeout.time = 64
+
+;------------------------------------------------------------------------------------------------------------------------------------
+;Game ending screen definition
+
+;This screen shows up after the Win Screen.
+;It will not be displayed if the winning character has an ending.
+[Default Ending]
+enabled = 0               	;Set to 1 to show default ending, 0 to disable
+storyboard =              	;Default ending storyboard filename
+
+;-------------------------------------------------------------------------------------------------------------------------------------
+;Ending credits screen definition
+
+;This screen shows up after the Win Screen and Ending
+[End Credits]
+enabled = 0               	;Set to 1 to show credits, 0 to disable
+storyboard =              	;Credits storyboard filename
+
+;------------------------------------------------------------------------------------------------------------------------------------
+;Survival mode results screen definition
+
+;This is the screen that is shown when you win in survival mode.
+;It will not be displayed if the winning character has an ending.
+[Survival Results Screen]
+enabled = 1
+winstext.text = "Rounds survived: %i"  ;Use %i for win counter
+winstext.font = 3,0,0
+winstext.offset = 640,240
+winstext.displaytime = -1
+winstext.layerno = 2
+fadein.time = 32
+show.time = 300
+fadeout.time = 64
+roundstowin = 5           	;Number of rounds to get win pose (lose pose otherwise)
+
+;------------------------------------------------------------------------------------------------------------------------------------
+;Options screen definition
+[Option Info]
+fadein.time = 10
+fadeout.time = 10
+;title.offset = 640,38
+;title.font = 4,0,0
+cursor.move.snd = 100,0
+cursor.done.snd = 100,1
+cancel.snd = 100,2
+
+;------------------------------------------------------------------------------------------------------------------------------------
+;Options screen background
+[OptionBGdef] 
+
+[OptionBG 1] ;Fondo Menú Options
+type  = normal
+spriteno = 0,8
+start = 0,0
